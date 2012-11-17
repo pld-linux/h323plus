@@ -1,0 +1,11 @@
+--- h323plus/include/h460/h460_std23.h~	2011-12-16 11:29:04.000000000 +0100
++++ h323plus/include/h460/h460_std23.h	2012-11-17 13:15:55.842757960 +0100
+@@ -63,7 +63,7 @@
+ {
+     // compile issue with PTLIB SVN object.h/cxx r26772 revert both files back to SVN r26754 - SH
+     // commenting out will create a ambiguous delete in class destructor compile error.
+-    PCLASSINFO(PNatMethod_H46024, PNatMethod); 
++//    PCLASSINFO(PNatMethod_H46024, PNatMethod); 
+ 
+     public:
+         PNatMethod_H46024();
