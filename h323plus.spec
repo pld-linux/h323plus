@@ -17,6 +17,7 @@ Group:		Libraries
 Source0:	http://www.h323plus.org/source/download/%{name}-v%{fver}.tar.gz
 # Source0-md5:	459d527c3b52dc34837c9530899f556a
 Patch0:		%{name}-configure.patch
+# update this patch when bumping ptlib BR
 Patch1:		%{name}-ptlib-version.patch
 Patch2:		%{name}-mak-paths.patch
 Patch3:		%{name}-gcc47.patch
