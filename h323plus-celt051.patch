@@ -1,0 +1,22 @@
+--- h323plus/plugins/configure.ac~	2010-09-20 11:04:24.000000000 +0200
++++ h323plus/plugins/configure.ac	2012-11-17 13:00:12.200193585 +0100
+@@ -361,7 +361,7 @@
+   AC_MSG_RESULT(Manually disabled CELT)
+ else
+   PKG_CHECK_MODULES([CELT],
+-                    [celt],
++                    [celt051],
+                     [
+                      AC_SUBST(CELT_CFLAGS)
+                      AC_SUBST(CELT_LIBS)
+--- h323plus/plugins/audio/celt/celtcodec.c~	2010-02-24 03:19:19.000000000 +0100
++++ h323plus/plugins/audio/celt/celtcodec.c	2012-11-17 13:01:19.631672865 +0100
+@@ -14,7 +14,7 @@
+ #include "plugin-config.h"
+ 
+ #include <codec/opalplugin.h>
+-#include <celt/celt.h>
++#include <celt051/celt.h>
+ 
+ #ifndef FALSE
+ #define FALSE 0
