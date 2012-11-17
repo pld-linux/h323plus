@@ -1,0 +1,79 @@
+--- openh323_v1_18_0.org/plugins/audio/GSM0610/Makefile.in	2006-02-20 09:55:03.000000000 +0100
++++ openh323_v1_18_0/plugins/audio/GSM0610/Makefile.in	2006-04-13 00:33:57.113558000 +0200
+@@ -63,7 +63,7 @@
+ libdir=@libdir@
+ target_os=@target_os@
+ 
+-GSM_SYSTEM=@GSM_SYSTEM@
++GSM_SYSTEM=1
+ GSM_LIBS=@GSM_LIBS@
+ GSM_CFLAGS=@GSM_CFLAGS@
+ SONAME	= gsm0610
+--- openh323_v1_18_0.org/plugins/audio/LPC_10/lpc_10_codec.c	2005-07-15 12:09:00.000000000 +0200
++++ openh323_v1_18_0/plugins/audio/LPC_10/lpc_10_codec.c	2006-04-13 00:33:28.883793750 +0200
+@@ -44,7 +44,7 @@
+ 
+ #include <codec/opalplugin.h>
+ 
+-#include "lpc10.h"
++#include <lpc10.h>
+ 
+ 
+ enum {
+--- openh323_v1_18_0.org/plugins/audio/LPC_10/Makefile.in	2004-08-22 06:20:19.000000000 +0200
++++ openh323_v1_18_0/plugins/audio/LPC_10/Makefile.in	2006-04-13 00:33:28.883793750 +0200
+@@ -52,41 +52,8 @@
+ 
+ HEADER_FILES	+= $(LPC10_INCDIR)/lpc10.h
+ 
+-SRCS	+= lpc_10_codec.c \
+-	   $(SRCDIR)/f2clib.c \
+-	   $(SRCDIR)/analys.c \
+-	   $(SRCDIR)/bsynz.c \
+-	   $(SRCDIR)/chanwr.c \
+-	   $(SRCDIR)/dcbias.c \
+-	   $(SRCDIR)/decode_.c \
+-	   $(SRCDIR)/deemp.c \
+-	   $(SRCDIR)/difmag.c \
+-	   $(SRCDIR)/dyptrk.c \
+-	   $(SRCDIR)/encode_.c \
+-	   $(SRCDIR)/energy.c \
+-	   $(SRCDIR)/ham84.c \
+-	   $(SRCDIR)/hp100.c \
+-	   $(SRCDIR)/invert.c \
+-	   $(SRCDIR)/irc2pc.c \
+-	   $(SRCDIR)/ivfilt.c \
+-	   $(SRCDIR)/lpcdec.c \
+-	   $(SRCDIR)/lpcenc.c \
+-	   $(SRCDIR)/lpcini.c \
+-	   $(SRCDIR)/lpfilt.c \
+-	   $(SRCDIR)/median.c \
+-	   $(SRCDIR)/mload.c \
+-	   $(SRCDIR)/onset.c \
+-	   $(SRCDIR)/pitsyn.c \
+-	   $(SRCDIR)/placea.c \
+-	   $(SRCDIR)/placev.c \
+-	   $(SRCDIR)/preemp.c \
+-	   $(SRCDIR)/prepro.c \
+-	   $(SRCDIR)/random.c \
+-	   $(SRCDIR)/rcchk.c \
+-	   $(SRCDIR)/synths.c \
+-	   $(SRCDIR)/tbdm.c \
+-	   $(SRCDIR)/voicin.c \
+-	   $(SRCDIR)/vparms.c \
++SRCS	+= lpc_10_codec.c
++EXTRALIBS = -llpc10
+ 
+ vpath	%.o $(OBJDIR)
+ vpath	%.c $(SRCDIR)
+--- openh323_v1_18_0.org/plugins/audio/Speex/speexcodec.cxx	2005-08-15 03:57:13.000000000 +0200
++++ openh323_v1_18_0/plugins/audio/Speex/speexcodec.cxx	2006-04-13 00:33:28.883793750 +0200
+@@ -88,7 +88,7 @@
+ #endif
+ 
+ extern "C" {
+-#include "libspeex/speex.h" 
++#include <speex/speex.h> 
+ }
+ 
+ #define NARROW_SAMPLES_PER_FRAME       160
