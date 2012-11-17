@@ -1,0 +1,34 @@
+--- h323plus/configure.ac.orig	2012-11-17 12:29:50.353591179 +0100
++++ h323plus/configure.ac	2012-11-17 12:30:55.086922230 +0100
+@@ -70,25 +70,13 @@
+ fi
+ 
+ if test "${HAS_PTLIB:-unset}" = "unset" ; then
+-  AC_CHECK_HEADER(${OPENH323DIR}/../ptlib/version.h, HAS_PTLIB=1) 	 
+-  if test "${HAS_PTLIB:-unset}" != "unset" ; then
+-    PTLIBDIR="${OPENH323DIR}/../ptlib"
++  AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/bin)
++else
++  if test "${PTLIB_CONFIG:-unset}" = "unset" ; then
++    AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/share/ptlib/make/)
+   else
+-    AC_CHECK_HEADER(${HOME}/ptlib/version.h, HAS_PTLIB=1) 	 
+-    if test "${HAS_PTLIB:-unset}" != "unset" ; then
+-      PTLIBDIR="${HOME}/ptlib"
+-    else
+-      if test "${HAS_PTLIB:-unset}" = "unset" ; then
+-        AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/local/bin)
+-      else
+-        if test "${PTLIB_CONFIG:-unset}" = "unset" ; then
+-          AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/share/ptlib/make/)
+-        else
+-          if test "${PTLIB_CONFIG:-unset}" = "unset" ; then
+-            AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/share/ptlib/make/)
+-          fi
+-        fi
+-      fi
++    if test "${PTLIB_CONFIG:-unset}" = "unset" ; then
++      AC_PATH_PROG(PTLIB_CONFIG, ptlib-config, , /usr/share/ptlib/make/)
+     fi
+   fi
+ fi
