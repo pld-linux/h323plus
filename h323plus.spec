@@ -8,10 +8,10 @@
 
 %define		fver	%(echo %{version} | tr . _)
 Summary:	H.323 Plus Library
-Summary(pl.UTF-8):	Biblioteka OpenH323
+Summary(pl.UTF-8):	Biblioteka H.323 Plus
 Name:		h323plus
 Version:	1.24.0
-Release:	0.1
+Release:	1
 License:	MPL 1.0
 Group:		Libraries
 Source0:	http://www.h323plus.org/source/download/%{name}-v%{fver}.tar.gz
@@ -35,49 +35,52 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	speex-devel >= 1:1.1.5
 Requires:	speex >= 1:1.1.5
 Obsoletes:	openh323 < %{version}-%{release}
+Provides:	openh323 = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The OpenH323 project aims to create a full featured, interoperable,
+The H.323 Plus project aims to create a full featured, interoperable,
 Open Source implementation of the ITU H.323 teleconferencing protocol
 that can be used by personal developers and commercial users without
 charge.
 
 %description -l pl.UTF-8
-Celem projektu OpenH323 jest stworzenie w pełni funkcjonalnej i
+Celem projektu H.323 Plus jest stworzenie w pełni funkcjonalnej i
 wyposażonej implementacji protokołu telekonferencyjnego ITU H.323,
 który może być używany przez użytkowników prywatnych i komercyjnych
 bez opłat.
 
 %package devel
-Summary:	OpenH323 development files
-Summary(pl.UTF-8):	Pliki dla developerów OpenH323
+Summary:	H.323 Plus development files
+Summary(pl.UTF-8):	Pliki dla developerów H.323 Plus
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ffmpeg-devel
 Requires:	ptlib-devel >= 2.10.1
 Obsoletes:	openh323-devel < %{version}-%{release}
+Provides:	openh323-devel = %{version}-%{release}
 
 %description devel
 Header files and libraries for developing applications that use
-OpenH323.
+H.323 Plus.
 
 %description devel -l pl.UTF-8
 Pliki nagłówkowe i biblioteki konieczne do rozwoju aplikacji
-używających OpenH323.
+używających H.323 Plus.
 
 %package static
-Summary:	OpenH323 static libraries
-Summary(pl.UTF-8):	Biblioteki statyczne OpenH323
+Summary:	H.323 Plus static libraries
+Summary(pl.UTF-8):	Biblioteki statyczne H.323 Plus
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	openh323-ststic < %{version}-%{release}
+Provides:	openh323-ststic = %{version}-%{release}
 
 %description static
-OpenH323 static libraries.
+H.323 Plus static libraries.
 
 %description static -l pl.UTF-8
-Biblioteki statyczne OpenH323.
+Biblioteki statyczne H.323 Plus.
 
 %prep
 %setup -q -n %{name}
@@ -148,6 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.txt
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libh323.so.*.*.*
+%dir %{_libdir}/opal-%{version}
 %dir %{_libdir}/opal-%{version}/codecs
 %dir %{_libdir}/opal-%{version}/codecs/audio
 %dir %{_libdir}/opal-%{version}/codecs/video
