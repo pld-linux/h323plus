@@ -11,7 +11,7 @@ Summary:	H.323 Plus Library
 Summary(pl.UTF-8):	Biblioteka H.323 Plus
 Name:		h323plus
 Version:	1.24.0
-Release:	2
+Release:	3
 License:	MPL 1.0
 Group:		Libraries
 Source0:	http://www.h323plus.org/source/download/%{name}-v%{fver}.tar.gz
